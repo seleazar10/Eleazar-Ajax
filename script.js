@@ -10,15 +10,15 @@ function displayEmotion() {
 
 
 
-    $.ajax({
+        $.ajax({
         url: queryURL,
         method: 'GET'
-    }).then(function (response) {
+        }).then(function (response) {
 
 
         var newDiv = $('<div class="pics">');
 
-        
+
 
         console.log(response)
 
@@ -26,7 +26,7 @@ function displayEmotion() {
 
         console.log(newData)
 
-        for (var i = 0; i < newData.length; i++) {
+        
             var para = $('<p>').text("Rating: " + newData[i].rating)
             newDiv.append(para)
 
@@ -38,9 +38,6 @@ function displayEmotion() {
 
             $('.placeholder').prepend(newDiv)
 
-            buttonDisplay()
-
-        }
 
 
     })
@@ -63,12 +60,12 @@ function displayEmotion() {
     }
 
     $('.btnsub').on('click', function(event) {
-       
+
         event.preventDefault()
 
-        var adder = #()
+        var adder = $('#btno').val().trim()
 
-        emotionInputArr.push()
+        emotionInputArr.push(adder)
 
 
     })
