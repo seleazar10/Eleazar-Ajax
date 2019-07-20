@@ -6,56 +6,72 @@ function displayEmotion() {
     var search = $(this).attr('data-name')
     console.log(search)
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-    search + "&api_key="+apiKey+"&limit=10"
+        search + "&api_key=" + apiKey + "&limit=10"
 
 
 
-$.ajax({
-    url: queryURL,
-    method: 'GET'
-}).then(function(response){
-    var newDiv = $('<div class="pics">');
-    
-
-    console.log(response)
-
-    var newData = response.data
-
-    console.log(newData)
-
-    for (var i = 0; i<newData.length; i++){
-        var para = $('<p>').text("Rating: " + newData[i].rating)
-        newDiv.append(para)
+    $.ajax({
+        url: queryURL,
+        method: 'GET'
+    }).then(function (response) {
 
 
-        var img = $('<img>').attr('src',newData[i].images.fixed_height.url)
-        newDiv.append(img)
+        var newDiv = $('<div class="pics">');
+
+        
+
+        console.log(response)
+
+        var newData = response.data
+
+        console.log(newData)
+
+        for (var i = 0; i < newData.length; i++) {
+            var para = $('<p>').text("Rating: " + newData[i].rating)
+            newDiv.append(para)
+
+
+            var img = $('<img>').attr('src', newData[i].images.fixed_height.url)
+            newDiv.append(img)
 
 
 
-        $('.placeholder').prepend(newDiv)
-        console.log(emotionInputArr)
+            $('.placeholder').prepend(newDiv)
+
+            buttonDisplay()
+
+        }
+
+
+    })
+
+    function buttonDisplay() {
+        $('#buttonsAll').empty()
+
+        for (var i = 0; i < emotionInputArr.length; i++) {
+            var btnz = $('<button>')
+            btnz.addClass('btn btn-primary mr-2')
+            btnz.attr('data-name', emotionInputArr[i]);
+            btnz.text(emotionInputArr[i])
+
+
+
+            $('#buttonsAll').append(btnz)
+
+
+        }
     }
 
+    $('.btnsub').on('click', function(event) {
+       
+        event.preventDefault()
 
-})
+        var adder = #()
 
-function buttonDisplay(){
-    $('#buttonsAll').empty()
-
-    for (var i=0; i<emotionInputArr.length; i++){
-        var btnz = $('<button>')
-        btnz.attr('class', "btons")
-        btnz.data(emotionInputArr[i])
-    }
-}
-
-$('buttons').on('click', function(event){
-    console.log('yay')
-    event.preventDefault()
+        emotionInputArr.push()
 
 
-})
+    })
 
 
 
@@ -82,7 +98,7 @@ displayEmotion()
 
 
 
-    
+
 
 
 
@@ -119,7 +135,7 @@ displayEmotion()
 //         console.log(gif)
 
 //         // var newDiv = $("<div>");
-        
+
 //         console.log(gif.length)
 
 //         for(var i=0; i<gif.length; i++){
@@ -140,7 +156,7 @@ displayEmotion()
 
 
 
-          
+
 //         }
 
 
