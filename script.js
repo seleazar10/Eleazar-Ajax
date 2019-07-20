@@ -16,7 +16,7 @@ function displayEmotion() {
         }).then(function (response) {
 
 
-        var newDiv = $('<div class="pics">');
+        var newDiv = $('<div class="pics ">');
 
 
 
@@ -35,7 +35,9 @@ function displayEmotion() {
             newDiv.append(para)
 
 
-            var img = $('<img>').attr('src', newData[i].images.fixed_height.url)
+            var img = $('<img class="pico">').attr('src', newData[i].images.fixed_height.url)
+            // newDiv.append(img)
+          
             newDiv.append(img)
 
 

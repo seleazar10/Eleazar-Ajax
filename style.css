@@ -1,0 +1,14 @@
+body{
+    height: 100%;
+    background-color: lightgray;
+}
+
+.pico{
+    width: 200px;
+ 
+}
+
+.jumbotron{
+    background-color: rgb(231, 245, 240);
+}
+
