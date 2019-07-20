@@ -14,7 +14,7 @@ $.ajax({
     url: queryURL,
     method: 'GET'
 }).then(function(response){
-    var newDiv = $('<div>');
+    var newDiv = $('<div class="pics">');
     
 
     console.log(response)
@@ -24,7 +24,7 @@ $.ajax({
     console.log(newData)
 
     for (var i = 0; i<newData.length; i++){
-        var para = $('<p>').text(newData[i].rating)
+        var para = $('<p>').text("Rating: " + newData[i].rating)
         newDiv.append(para)
 
 
@@ -40,11 +40,27 @@ $.ajax({
 
 })
 
+function buttonDisplay(){
+    $('#buttonsAll').empty()
+
+    for (var i=0; i<emotionInputArr.length; i++){
+        var btnz = $('<button>')
+        btnz.attr('class', "btons")
+        btnz.data(emotionInputArr[i])
+    }
+}
+
 $('buttons').on('click', function(event){
-    event.preventDefault
-    console.log(btno.val())
+    console.log('yay')
+    event.preventDefault()
+
 
 })
+
+
+
+
+
 
 }
 
