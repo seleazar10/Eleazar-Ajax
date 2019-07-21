@@ -10,5 +10,9 @@ body{
 
 .jumbotron{
     background-color: rgb(231, 245, 240);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.726), rgba(0, 0, 0, 0.705)), url('images/emotions.jpg');
+    background-position: center;
+    background-size: 100vh;
+    color: white;
 }
 

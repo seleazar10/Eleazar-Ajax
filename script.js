@@ -1,5 +1,5 @@
 
-var emotionInputArr = ['Happy', 'Sad']
+var emotionInputArr = []
 
 function displayEmotion() {
     var apiKey = "gYwXxNDawHfglRSDKhn3ZK9UaIRtSHlc"
