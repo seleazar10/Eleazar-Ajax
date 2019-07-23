@@ -1,7 +1,44 @@
 
 var emotionInputArr = []
 
+$('.buttonAlert').hide()
+
+//
+function buttonDisplay() {
+    $('#buttonsAll').empty();
+    for (var i = 0; i < emotionInputArr.length; i++) {
+        var btnz = $('<button>')
+        btnz.addClass('btn btn-primary mr-2')
+        btnz.attr('data-name', emotionInputArr[i]);
+        btnz.text(emotionInputArr[i])
+        $('#buttonsAll').append(btnz)
+
+
+    }
+}
+
+
+
+//
+$('#btnsub').on('click', function (event) {
+
+    event.preventDefault()
+
+    var btnd = $('#adder').val().trim()
+
+    emotionInputArr.push(btnd)
+
+    buttonDisplay()
+
+    $('#adder').val("")
+
+    $('.buttonAlert').toggle()
+
+
+})
+
 function displayEmotion() {
+
     var apiKey = "gYwXxNDawHfglRSDKhn3ZK9UaIRtSHlc"
     var search = $(this).attr('data-name')
     console.log(search)
@@ -10,83 +47,82 @@ function displayEmotion() {
 
 
 
-        $.ajax({
+    $.ajax({
         url: queryURL,
         method: 'GET'
-        }).then(function (response) {
+    }).then(function (response) {
 
 
         var newDiv = $('<div class="pics ">');
 
-
-
         console.log(response)
-
         var newData = response.data
-
         console.log(newData.length)
 
-        for (i=0; i<newData.length; i++){
-            
-        
 
-        
-            var para = $('<p>').text("Rating: " + newData[i].rating)
-            newDiv.append(para)
+        for (i = 0; i < newData.length; i++) {
 
-
-            var img = $('<img class="pico">').attr('src', newData[i].images.fixed_height.url)
-            // newDiv.append(img)
-          
-            newDiv.append(img)
+            var allGif = $("<img class='pico'>")
+            allGif.attr("src", newData[i].images.fixed_height_still.url)
+            allGif.attr("data-still", newData[i].images.fixed_height_still.url);
+            allGif.attr("data-animate", newData[i].images.fixed_height_still.url);
+            allGif.attr("data-state", "still");
+            allGif.addClass("gifMove");
 
 
 
-            $('.placeholder').prepend(newDiv)
+            $('.placeholder').prepend("<p>Rating: " + newData[i].rating + "</p>")
+            $('.placeholder').prepend(allGif)
 
         }
 
 
 
-    })
-
-}
-
-    function buttonDisplay() {
-        $('#buttonsAll').empty();
-
-        for (var i = 0; i < emotionInputArr.length; i++) {
-            var btnz = $('<button>')
-            btnz.addClass('btn btn-primary mr-2')
-            btnz.attr('data-name', emotionInputArr[i]);
-            btnz.text(emotionInputArr[i])
+        })
 
 
-
-            $('#buttonsAll').append(btnz)
-
-
-        }
     }
 
-    $('#btnsub').on('click', function(event) {
-
-        event.preventDefault()
-
-        var btnd = $('#adder').val().trim()
-
-        emotionInputArr.push(btnd)
-
-        buttonDisplay()
 
 
-    })
-
-    buttonDisplay()
+buttonDisplay()
 
 
 
 $(document).on('click', '.btn', displayEmotion)
+
+$(document).on('click', '.gifMove', function () {
+    console.log('click')
+
+    var imgState = $(this).attr('data-state');
+
+    var still = $(this).attr('data-still')
+
+    var animate = $(this).attr('data-animate')
+
+
+
+
+    if (imgState === 'still') {
+        $(this).attr('src', animate)
+        $(this).attr('data-state', 'animate')
+    } else {
+        $(this).attr('src', still);
+        $(this).attr('data-state', 'still');
+
+    }
+
+
+
+
+
+
+})
+
+
+
+
+
 
 
 
