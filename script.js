@@ -65,7 +65,7 @@ function displayEmotion() {
             var allGif = $("<img class='pico'>")
             allGif.attr("src", newData[i].images.fixed_height_still.url)
             allGif.attr("data-still", newData[i].images.fixed_height_still.url);
-            allGif.attr("data-animate", newData[i].images.fixed_height_still.url);
+            allGif.attr("data-animate", newData[i].images.fixed_height.url);
             allGif.attr("data-state", "still");
             allGif.addClass("gifMove");
 
